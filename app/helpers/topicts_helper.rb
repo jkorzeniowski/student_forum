@@ -1,0 +1,2 @@
+module TopictsHelper
+end

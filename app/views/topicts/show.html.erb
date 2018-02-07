@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Itle:</strong>
+  <%= @topict.itle %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @topict.student %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @topict.course %>
+</p>
+
+<%= link_to 'Edit', edit_topict_path(@topict) %> |
+<%= link_to 'Back', topicts_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Topicts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Itle</th>
+      <th>Student</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topicts.each do |topict| %>
+      <tr>
+        <td><%= topict.itle %></td>
+        <td><%= topict.student %></td>
+        <td><%= topict.course %></td>
+        <td><%= link_to 'Show', topict %></td>
+        <td><%= link_to 'Edit', edit_topict_path(topict) %></td>
+        <td><%= link_to 'Destroy', topict, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Topict', new_topict_path %>
