@@ -3,8 +3,21 @@
 		<head>
 				<title>StudentForum</title>
 				<%=	csrf_meta_tags	%>
+
 				<%=	stylesheet_link_tag		'application',	media:	'all',	'data-turbolinks-track':	'reload'	%>
 				<%=	javascript_include_tag	'application',	'data-turbolinks-track':	'reload'	%>
+
+				<ul>
+					<li><%=	link_to	"Strona	główna",	root_path	%></li>
+					<li><%=	link_to	"Kursy",	courses_path	%></li>
+					<li><%=	link_to	"Studenci",	students_path	%></li>
+					<%	if	logged_in?	%>
+						<li><%=	link_to	current_student.name,	current_student	%></li>
+						<li><%=	link_to	"Wyloguj",	logout_path,	method:	:delete	%></li>
+					<%	else	%>
+						<li><%=	link_to	"Zaloguj",	login_path	%></li>
+					<%	end	%>
+				</ul>
 		</head>
 		<body>
 				<%=	yield	%>

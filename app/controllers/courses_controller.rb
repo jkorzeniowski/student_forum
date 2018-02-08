@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :follow]
 
   # GET /courses
   # GET /courses.json
@@ -59,6 +59,10 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  def	follow
+    current_student.courses.append(@course)
+		redirect_to	@course
   end
 
   private
