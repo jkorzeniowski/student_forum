@@ -1,11 +1,18 @@
+<%	if	logged_in?	%>
+		Zalogowany	jako	<%=	current_student.name	%>
+		<%=	link_to	"Profil",	current_student	%>
+		<%=	link_to	"Wyloguj",	logout_path,	method:	:delete	%>
+<%	else	%>
+		<%=	link_to	"Zaloguj",	login_path	%>
+<%	end	%>
 <h1>Projekt Aplikacje_mobilne</h1>
-<p>
-Lista studentów istniejących w bazie:
-</p>
+	<p>
+		Lista studentów istniejących w bazie:
+	</p>
 <ul>
-<%	@students.each	do	|student|	%>
+	<%	@students.each	do	|student|	%>
 		<%=	link_to	student	do	%>
 				<li><%=	student.name	%>	<%=	student.index	%></li>
 		<%	end	%>
-<%	end	%>
+	<%	end	%>
 </ul>

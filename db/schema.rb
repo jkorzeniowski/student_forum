@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207215122) do
+ActiveRecord::Schema.define(version: 20180208193830) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180207215122) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
   end
+
+  add_index "students", ["index"], name: "index_students_on_index", unique: true
 
   create_table "topics", force: :cascade do |t|
     t.string   "itle"
