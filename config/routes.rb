@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   get	'/courses/:id/follow',	to:	'courses#follow'
   get	'/courses/:id/unfollow',	to:	'courses#unfollow'
 
-  resources :topics
-  resources :posts
+  #resources :topics
+  #resources :posts
   #resources :topicts
-  resources :courses
   resources :students
+  resources :courses do
+    resources	:topics,	only:	[:new,	:create,	:edit,	:update,	:show,	:destroy]	do
+				resources	:posts,	only:	[:new,	:create,	:edit,	:update,	:show,	:destroy]
+  end
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
