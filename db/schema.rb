@@ -17,9 +17,12 @@ ActiveRecord::Schema.define(version: 20180208193830) do
     t.string   "name"
     t.string   "code"
     t.string   "description"
+    t.integer  "student_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "courses", ["student_id"], name: "index_courses_on_student_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "body"
@@ -33,7 +36,12 @@ ActiveRecord::Schema.define(version: 20180208193830) do
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
 
   create_table "student_courses", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "course_id"
   end
+
+  add_index "student_courses", ["course_id"], name: "index_student_courses_on_course_id"
+  add_index "student_courses", ["student_id"], name: "index_student_courses_on_student_id"
 
   create_table "students", force: :cascade do |t|
     t.string   "index"
