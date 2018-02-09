@@ -5,7 +5,11 @@
 <p><%=	@course.description	%></p>
 
 <%	if	logged_in?	%>
+	<%	unless	current_student.follows?(@course)	%>
 		<%=	link_to(	"Zapisz	się	do	kursu",	action:	:follow)	%>
+		<%	else	%>
+					<%=	link_to(	"Wypisz	się	z	kursu",	action:	:unfollow)	%>
+			<%	end	%>
 <%	end	%>
 <hr>
 <h1>Zapisani	studenci</h1>

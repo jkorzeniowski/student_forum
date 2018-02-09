@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post			'/login',			to:	'sessions#create'
   delete	'/logout',		to:	'sessions#destroy'
   get	'/courses/:id/follow',	to:	'courses#follow'
+  get	'/courses/:id/unfollow',	to:	'courses#unfollow'
 
   resources :topics
   resources :posts

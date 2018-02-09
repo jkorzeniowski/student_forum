@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy, :follow]
+  before_action	:set_course,	only:	[:show,	:edit,	:update,	:destroy,	:follow,	:unfollow]
 
   # GET /courses
   # GET /courses.json
@@ -50,7 +51,13 @@ class CoursesController < ApplicationController
       end
     end
   end
-
+  
+  def	unfollow
+		if	current_student.follows?(@course)
+				@course.students.delete(current_student)
+		end
+		redirect_to	@course
+  end
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
@@ -61,7 +68,9 @@ class CoursesController < ApplicationController
     end
   end
   def	follow
-    current_student.courses.append(@course)
+    unless	current_student.follows?(@course)
+      current_student.courses.append(@course)
+    end
 		redirect_to	@course
   end
 

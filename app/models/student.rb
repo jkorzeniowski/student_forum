@@ -6,4 +6,9 @@ class Student < ActiveRecord::Base
   validates	:name,	presence:	true,	uniqueness:	true,	length:	{	in:	3..50	}
   validates	:index,	presence:	true,	length:	{	is:	6	},	uniqueness:	true
   validates	:password,	presence:	true,	length:	{	minimum:	6	}
+
+  def	follows?(course)
+      self.courses.include?(course)
+  end
+
 end
